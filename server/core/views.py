@@ -3,7 +3,6 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
-from .serializers import UserSerializer
 from rest_framework import generics
 from django.shortcuts import get_object_or_404
 from .models import Game, Platform, Genre, Publisher, Developer
@@ -30,16 +29,18 @@ class LoginView(APIView):
             return Response({'token': token.key})
         return Response(serializer.errors, status=400)
 
-
-
 class GameView(viewsets.ViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
 
     def retrieve_by_name(self, request, gameName=None):
-        instance = get_object_or_404(self.queryset, gameName=gameName)
-        serializer = self.serializer_class(instance)
-        return Response(serializer.data)
+        queryset = self.queryset.filter(gameName__iexact=gameName)  
+        if queryset.exists():
+            instance = queryset.first()
+            serializer = self.serializer_class(instance)
+            return Response(serializer.data)
+        else:
+            return Response({'error': 'Game not found.'}, status=status.HTTP_404_NOT_FOUND)
 
     def list(self, request):
         search_query = request.query_params.get('search', '')

@@ -6,12 +6,12 @@ from .views import RegisterView, LoginView
 
 
 urlpatterns = [
-    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+    #path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     path('game/', GameView.as_view({'get': 'list'})),
-    path('game/<str:gameName>/', GameView.as_view({'get': 'retrieve_by_name'})),
     path('game/search/', GameView.as_view({'get': 'search_games'}), name='game-search'),
     path('game/top-rated/', GameView.as_view({'get': 'get_top_rated_games'}), name='game-top-rated'),
     path('game/genre/<str:genreName>/', GameView.as_view({'get': 'get_games_by_genre'}), name='game-by-genre'),
+    path('game/<str:gameName>/', GameView.as_view({'get': 'retrieve_by_name'}), name='game-detail'),
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', LoginView.as_view(), name='login'),
     path('platforms/', PlatformView.as_view({'get': 'list'}), name='platform-list'),
