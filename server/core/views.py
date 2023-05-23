@@ -8,26 +8,12 @@ from django.shortcuts import get_object_or_404
 from .models import Game, Platform, Genre, Publisher, Developer
 from .serializers import GameSerializer, PlatformSerializer, GenreSerializer, PublisherSerializer, DeveloperSerializer
 from django.db.models import Q
+from rest_framework import generics
+from rest_framework_simplejwt.tokens import RefreshToken
 
 # Create your views here.
 
-class RegisterView(APIView):
-    def post(self, request):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            user = serializer.save()
-            token = Token.objects.create(user=user)
-            return Response({'token': token.key})
-        return Response(serializer.errors, status=400)
 
-class LoginView(APIView):
-    def post(self, request):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            user = serializer.validated_data['username']
-            token, _ = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key})
-        return Response(serializer.errors, status=400)
 
 class GameView(viewsets.ViewSet):
     queryset = Game.objects.all()
