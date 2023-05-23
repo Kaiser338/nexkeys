@@ -1,9 +1,12 @@
 'use client';
-
+import env from './env-config.js';
+import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+const authToken = process.env.AUTH_TOKEN;
 
 const Search = () => {
+  const router = useRouter();
   const [searchText, setSearchText] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -12,7 +15,7 @@ const Search = () => {
       if (searchText.trim() !== '') {
         axios.get(`http://127.0.0.1:8000/core/game/?search=${searchText}`, {
           headers: {
-            Authorization: 'Token 263ce1e0c335a315c8f1efcf52b9d9b674407a04',
+            Authorization: `Token ${env.AUTH_TOKEN}`,
           },
         })
           .then(response => {
@@ -25,7 +28,7 @@ const Search = () => {
       } else {
         setSearchResults([]);
       }
-    }, 3000);
+    }, 2000);
   
     return () => {
       clearTimeout(delaySearch);
@@ -37,12 +40,19 @@ const Search = () => {
     setSearchText(event.target.value);
   };
 
+
+  const handleSearchResultClick = (gameId) => {
+    router.push(`/products/${gameId}`);
+  };
+
   return (
     <div>
       <input type="text" placeholder="Search" value={searchText} onChange={handleSearchChange} />
       <ul>
         {searchResults.map(result => (
-          <li key={result.id}>{result.gameName}</li>
+          <li className='search-list' key={result.id} onClick={() => handleSearchResultClick(result.id)}>
+            {result.gameName}
+          </li>
         ))}
       </ul>
     </div>
