@@ -48,13 +48,15 @@ const Search = () => {
   return (
     <div>
       <input type="text" placeholder="Search" value={searchText} onChange={handleSearchChange} />
-      <ul>
-        {searchResults.map(result => (
-          <li className='search-list' key={result.id} onClick={() => handleSearchResultClick(result.id)}>
-            {result.gameName}
-          </li>
-        ))}
-      </ul>
+      <div className='search-results'>
+        <ul>
+          {searchResults.map(result => (
+            <li className='search-list' key={result.id} onClick={() => handleSearchResultClick(result.id)}>
+              {result.gameName}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
