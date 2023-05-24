@@ -10,9 +10,9 @@ from .serializers import GameSerializer, PlatformSerializer, GenreSerializer, Pu
 from django.db.models import Q
 from rest_framework import generics
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 
 # Create your views here.
-
 
 
 class GameView(viewsets.ViewSet):
@@ -80,6 +80,7 @@ class PlatformView(viewsets.ModelViewSet):
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
 
+
 class GenreView(viewsets.ModelViewSet):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
@@ -89,6 +90,7 @@ class GenreView(viewsets.ModelViewSet):
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
 
+
 class PublisherView(viewsets.ModelViewSet):
     queryset = Publisher.objects.all()
     serializer_class = PublisherSerializer
@@ -97,6 +99,7 @@ class PublisherView(viewsets.ModelViewSet):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
+
 
 class DeveloperView(viewsets.ModelViewSet):
     queryset = Developer.objects.all()
