@@ -29,7 +29,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
-    # Provide unique related names for the reverse accessors
     groups = models.ManyToManyField(
         'auth.Group',
         related_name='custom_users',

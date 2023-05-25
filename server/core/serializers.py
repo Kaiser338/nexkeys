@@ -22,7 +22,7 @@ class DeveloperSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class GameSerializer(serializers.ModelSerializer):
-    platforms = PlatformSerializer(many=True)  # Add this field to serialize platforms
+    platforms = PlatformSerializer(many=True)
 
     class Meta:
         model = Game
