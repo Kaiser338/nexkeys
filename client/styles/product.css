@@ -1,0 +1,42 @@
+.image-component {
+    display: inline-block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    text-align: center;
+    overflow: hidden; /* Add overflow property to contain the child elements */
+  }
+  
+  .image-component img {
+    width: 8vw;
+    height: 25vh;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .component-title {
+    background-color: #222629;
+    height: 5.5vh;
+    font-family: Montserrat;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    padding: 0.1vh;
+    max-height: 5.5vh;
+    max-width: 8vw;
+  }
+  
+  .component-price {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+    color: #fff;
+    text-align: center;
+    background-color: #86C232;
+    padding: 0.4vh;
+    border-bottom-left-radius: 10px; /* Add rounded bottom left corner */
+    border-bottom-right-radius: 10px; /* Add rounded bottom right corner */
+  }
+  
