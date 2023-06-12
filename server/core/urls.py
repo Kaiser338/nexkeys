@@ -8,6 +8,7 @@ urlpatterns = [
     path('game/search/', GameView.as_view({'get': 'search_games'}), name='game-search'),
     path('game/top-rated/', GameView.as_view({'get': 'get_top_rated_games'}), name='game-top-rated'),
     path('game/genre/<str:genreName>/', GameView.as_view({'get': 'get_games_by_genre'}), name='game-by-genre'),
+    path('game/<int:pk>/', GameView.as_view({'get': 'retrieve'}), name='game-detail-by-id'),
     path('game/<str:gameName>/', GameView.as_view({'get': 'retrieve_by_name'}), name='game-detail'),
     path('platforms/', PlatformView.as_view({'get': 'list'}), name='platform-list'),
     path('platforms/<str:platformName>/', PlatformView.as_view({'get': 'retrieve_by_name'}), name='platform-detail'),

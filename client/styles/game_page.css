@@ -1,0 +1,92 @@
+.game-box-flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.game-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #333333;
+    height: 100vh;
+    font-size: 15px;
+  }
+  
+  .game-container {
+    display: flex;
+    align-items: flex-start;
+    width: 50%;
+    margin: 20px;
+    background-color: #2C2B30;
+    padding: 30px;
+  }
+  
+  .game-image {
+    width: 20%;
+    max-width: 100%;
+  }
+  
+  .game-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .game-info {
+    margin-left: 4vw;
+    width: 80%;
+  }
+  
+  .game-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .game-description {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .game-price {
+    font-size: 36px;
+  }
+  
+  .game-details {
+    margin-top: 20px;
+  }
+  
+  .game-details p {
+    margin: 10px 0;
+  }
+  
+  /* styles/price_list.css */
+
+.platform-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 20%;
+    margin: 20px auto;
+    background-color: #2C2B30;
+    padding: 20px;
+  }
+  
+  .platform-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #86C232;
+    padding: 10px 0;
+  }
+  
+  .platform-item:last-child {
+    border-bottom: none;
+  }
+  
+  .platform-item strong {
+    color: #86C232;
+    font-size: 20px;
+  }
+  

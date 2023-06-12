@@ -23,15 +23,8 @@ class DeveloperSerializer(serializers.ModelSerializer):
 
 class GameSerializer(serializers.ModelSerializer):
     platforms = PlatformSerializer(many=True)
+    genre = GenreSerializer()
 
     class Meta:
         model = Game
-        fields = ('id', 'gameName', 'date_added', 'description', 'rating', 'release_date', 'image', 'price', 'discount_price', 'platforms')
-
-    def create(self, validated_data):
-        platforms_data = validated_data.pop('platforms')
-        game = Game.objects.create(**validated_data)
-        for platform_data in platforms_data:
-            platform = Platform.objects.create(**platform_data)
-            game.platforms.add(platform)
-        return game
+        fields = ('id', 'gameName', 'date_added', 'description', 'rating', 'release_date', 'image', 'price', 'discount_price', 'platforms', 'genre')

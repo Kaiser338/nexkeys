@@ -19,13 +19,17 @@
     height: 5.5vh;
     font-family: Montserrat;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 15px;
     text-align: center;
     color: #fff;
-    padding: 0.1vh;
+    padding: 0.1vh 1vh; /* Add padding to the top and bottom, and left and right */
     max-height: 5.5vh;
     max-width: 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  
   
   .component-price {
     font-family: Montserrat;

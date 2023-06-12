@@ -38,6 +38,8 @@ class Game(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2, default=10)
     discount_price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
     platforms = models.ManyToManyField(Platform)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.gameName
+

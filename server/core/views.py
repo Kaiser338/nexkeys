@@ -3,6 +3,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import AllowAny
 from rest_framework import generics
 from django.shortcuts import get_object_or_404
 from .models import Game, Platform, Genre, Publisher, Developer
@@ -14,10 +15,19 @@ from rest_framework.decorators import api_view, permission_classes, authenticati
 
 # Create your views here.
 
-
+@permission_classes([AllowAny])
 class GameView(viewsets.ViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
+
+    def retrieve(self, request, pk=None):
+        queryset = self.queryset.filter(pk=pk)
+        if queryset.exists():
+            instance = queryset.first()
+            serializer = self.serializer_class(instance)
+            return Response(serializer.data)
+        else:
+            return Response({'error': 'Game not found.'}, status=status.HTTP_404_NOT_FOUND)
 
     def retrieve_by_name(self, request, gameName=None):
         queryset = self.queryset.filter(gameName__iexact=gameName)  
