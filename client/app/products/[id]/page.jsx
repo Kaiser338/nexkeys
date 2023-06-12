@@ -32,6 +32,7 @@ const GamePage = ({ params }) => {
 
   const platforms = game.platforms.map(platform => platform.name).join(', ');
 
+  
 
   return (
     <div className='game-box-flex'>
@@ -45,7 +46,7 @@ const GamePage = ({ params }) => {
             <p className="game-description">{game.description}</p>
             <div className="game-details">
               <p><strong>Genre:</strong> {game.genre.name}</p>
-              <p><strong>Rating:</strong> {game.rating.name}</p>
+              <p><strong>Rating:</strong> {game.rating}</p>
               <p><strong>Release Date:</strong> {game.release_date}</p>
               <p><strong>Platforms:</strong> {platforms}</p>
             </div>

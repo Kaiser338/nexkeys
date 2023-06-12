@@ -10,16 +10,21 @@ from django.contrib.auth import authenticate, login
 from rest_framework_simplejwt.tokens import RefreshToken, Token
 from django.http import HttpRequest
 from django.contrib.auth import login
+from django.contrib.auth.models import User
+from .serializers import UserSerializer
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register(request):
-    serializer = CustomUserSerializer(data=request.data)
+    serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save()
+        user = User.objects.create_user(
+            username=serializer.validated_data['username'],
+            email=serializer.validated_data['email'],
+            password=serializer.validated_data['password']
+        )
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 @api_view(['POST'])
 @permission_classes([AllowAny])

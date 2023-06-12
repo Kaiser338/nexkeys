@@ -44,6 +44,8 @@
 
 .product-component:hover {
   cursor: pointer;
+  transform: scale(1.05);
+  transition-duration: 0.3s;
 }
 
 @media (max-width: 480px) {

@@ -24,9 +24,12 @@ const Login = () => {
           localStorage.setItem('access', response.data.access);
           localStorage.setItem('username', username);
           localStorage.setItem('refresh', response.data.refresh);
-          router.push('/');
-          const history = useHistory()
-          history.go(0)
+          setTimeout(() => {
+            router.push('/');
+          }, 100);
+          setTimeout(() => {
+            window.location.reload();
+          }, 500);
         }
       } catch (error) {
         if (error.response && error.response.status === 401) {
