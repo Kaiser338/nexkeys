@@ -6,6 +6,7 @@ import '@styles/login.css';
 
 const Register = () => {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
@@ -15,6 +16,7 @@ const Register = () => {
     try {
       const response = await axios.post('http://localhost:8000/user/register/', {
         username: username,
+        email: email,
         password: password,
       });
 
@@ -32,6 +34,10 @@ const Register = () => {
         <label>
           Username:
           <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
+        </label>
+        <label>
+          Email:
+          <input type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
         <label>
           Password:

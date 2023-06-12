@@ -1,6 +1,7 @@
 import '@styles/globals.css';
 import { Root } from 'postcss';
 import Navbar from './navbar';
+import Footer from './footer';
 
 export const metadata = {
     title: "Nexkys",
@@ -16,7 +17,7 @@ const RootLayout = ({children}) => {
                 <main className="app">
                     {children}
                 </main>
-                
+                <Footer/>
             </body>
         </html>
     )

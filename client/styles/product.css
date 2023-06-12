@@ -1,46 +1,69 @@
 .image-component {
-    display: inline-block;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    color: white;
-    text-align: center;
-    overflow: hidden; /* Add overflow property to contain the child elements */
-  }
-  
+  display: inline-block;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+  text-align: center;
+  overflow: hidden; 
+}
+
+.image-component img {
+  width: 10vw;
+  height: 15vw;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.component-title {
+  background-color: #222629;
+  height: 5.5vh;
+  font-family: Montserrat;
+  font-weight: normal;
+  font-size: 0.8vw;
+  text-align: center;
+  color: #fff;
+  width: 10vw;
+  padding: 0.1vh 1vh;
+  max-height: 5.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.component-price {
+  font-family: Montserrat;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  color: #fff;
+  background-color: #86C232;
+  padding: 0.4vh;
+  border-bottom-left-radius: 10px; 
+  border-bottom-right-radius: 10px;
+}
+
+.product-component:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
   .image-component img {
-    width: 8vw;
-    height: 25vh;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    width: 10vw;
+    height: 15vw;
   }
-  
-  .component-title {
-    background-color: #222629;
-    height: 5.5vh;
-    font-family: Montserrat;
-    font-weight: normal;
-    font-size: 15px;
-    text-align: center;
-    color: #fff;
-    padding: 0.1vh 1vh; /* Add padding to the top and bottom, and left and right */
-    max-height: 5.5vh;
-    max-width: 8vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+  .component-title, .component-price {
+    font-size: 0.8vw;
   }
-  
-  
-  .component-price {
-    font-family: Montserrat;
-    font-weight: bold;
-    font-size: 20px;
-    text-align: left;
-    color: #fff;
-    text-align: center;
-    background-color: #86C232;
-    padding: 0.4vh;
-    border-bottom-left-radius: 10px; /* Add rounded bottom left corner */
-    border-bottom-right-radius: 10px; /* Add rounded bottom right corner */
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .image-component img {
+    width: 10vw;
+    height: 15vw;
   }
-  
+
+  .component-title, .component-price {
+    font-size: 0.8vw;
+  }
+}

@@ -20,7 +20,6 @@ def register(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-from django.contrib.auth import login
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -69,3 +68,18 @@ def refresh_token(request):
             return Response({'error': 'Invalid refresh token'}, status=status.HTTP_400_BAD_REQUEST)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def change_username(request):
+    user = request.user 
+    
+    new_username = request.data.get('username')
+    if not new_username:
+        return Response({'error': 'New username is required'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    user.username = new_username
+    user.save()
+
+    serializer = CustomUserSerializer(user)
+    return Response(serializer.data, status=status.HTTP_200_OK)

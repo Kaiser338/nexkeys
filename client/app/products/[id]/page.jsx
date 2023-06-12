@@ -32,10 +32,6 @@ const GamePage = ({ params }) => {
 
   const platforms = game.platforms.map(platform => platform.name).join(', ');
 
-  const prices = [
-    { platform: 'Steam', value: '$59.99' },
-    // Add more platforms and their respective prices here
-  ];
 
   return (
     <div className='game-box-flex'>
@@ -56,11 +52,9 @@ const GamePage = ({ params }) => {
           </div>
         </div>   
           <ul className="platform-list">
-                {prices.map(price => (
-                  <li key={price.platform} className="platform-item">
-                    <strong>{price.platform}</strong> {price.value}
-                  </li>
-                ))}
+                <li key={game.price} className="platform-item">
+                  <strong>Steam</strong> {game.price}$
+                </li>
           </ul>
         </div>
       

@@ -14,18 +14,31 @@ const Login = () => {
     const handleLogin = async (event) => {
       event.preventDefault();
   
+      try {
         const response = await axios.post('http://localhost:8000/user/login/', {
           email: username,
           password: password,
         });
   
         if (response.status === 200) {
-          router.push(`/`);
           localStorage.setItem('access', response.data.access);
+          localStorage.setItem('username', username);
           localStorage.setItem('refresh', response.data.refresh);
+          router.push('/');
+          const history = useHistory()
+          history.go(0)
         }
-
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          setError('Incorrect login or password');
+        } else {
+          setError('An error occurred during login');
+        }
+      }
     };
+
+
+
   return (
     <div className='login-container'>
       <form onSubmit={handleLogin}>

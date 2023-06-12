@@ -1,0 +1,102 @@
+.container-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .change_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2C2B30;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: -20vh;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  }
+  
+  .profile-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    color: white;
+  }
+  
+  .centered-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .current-username-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: white;
+    width: 150px;
+  }
+  
+  .current-username-input {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: white;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    margin-left: 5px;
+  }
+  
+  .new-username-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .new-username-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: white;
+    width: 150px;
+  }
+  
+  .new-username-input {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff8f;
+    padding: 10px;
+    margin-left: 5px;
+    width: 50%;
+  }
+  
+  .confirm-button {
+    background-color: #86C232;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+  }
+
+  .center-button {
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .error {
+    color: red;
+  }
+  
