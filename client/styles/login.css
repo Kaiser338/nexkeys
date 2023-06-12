@@ -1,0 +1,48 @@
+/* styles/login.css */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333333;
+  }
+  
+  .login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #2C2B30;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: -20vh;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+  
+  .login-container label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  .login-container input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 50%;
+    margin-left: auto;
+    background-color: #ffffff8f;
+  }
+  
+  .login-container input[type='submit'] {
+    background-color: #86C232;
+    color: white;
+    cursor: pointer;
+    width: 50%;
+    margin-left: auto;
+  }
+  
+  .error{
+    color: red;
+  }

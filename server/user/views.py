@@ -6,6 +6,10 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import CustomUser
 from .serializers import CustomUserSerializer, TokenPairSerializer, TokenRefreshSerializer
+from django.contrib.auth import authenticate, login
+from rest_framework_simplejwt.tokens import RefreshToken, Token
+from django.http import HttpRequest
+from django.contrib.auth import login
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -16,20 +20,29 @@ def register(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+from django.contrib.auth import login
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def login(request):
     email = request.data.get('email')
     password = request.data.get('password')
-    user = CustomUser.login(email, password)
 
-    if user:
+    django_request = HttpRequest()
+    django_request.method = request.method
+    django_request.POST = request.data
+    django_request.META = request.META
+
+    user = authenticate(django_request, username=email, password=password)
+
+    if user is not None:
         refresh = RefreshToken.for_user(user)
         access_token = str(refresh.access_token)
 
         return Response({'access': access_token, 'refresh': str(refresh)}, status=status.HTTP_200_OK)
 
     return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])

@@ -65,6 +65,10 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=3),
 }
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -77,7 +81,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000'
+     'http://localhost:3000',
+     'http://localhost:3001'
 ]
 
 ROOT_URLCONF = 'nexkeys.urls'
